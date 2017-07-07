@@ -39,7 +39,7 @@ public class TestInitATM {
 		}
 			
 		try{
-			emulador.init(10);
+			emulador.init(-10);
 			Assert.fail("Esperava exceção");
 		}catch (Exception e) {
 			Assert.assertEquals("Quantidade de notas invalida", e.getMessage());
