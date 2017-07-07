@@ -6,9 +6,10 @@ import org.junit.Test;
 
 public class TestDeposit {
 
+	// Partição de Equivalência
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testePartEqui(){
+			
 	}
 
 }
