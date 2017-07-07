@@ -26,7 +26,7 @@ public class TestTransfer {
 	
 	//Testes Partição de equivalência
 	@Test
-	public void transfPossuiContasDiferentes() {
+	public void transfPartEq() {
 		try{
 			emulador.transfer(1,Checking,Saving,0);
 			fail("Esperava exceção");
@@ -45,10 +45,8 @@ public class TestTransfer {
 		}catch(Exception e){
 			fail("Não esperava exceção");
 		}
-	}
-	
-	@Test
-	public void transfNaoPossuiConta() {
+		
+		
 		try{
 			emulador.transfer(1,Checking,Money_Market,0);
 			fail("Esperava exceção");
@@ -69,10 +67,8 @@ public class TestTransfer {
 		}catch(Exception e){
 			Assert.assertEquals("Você deve possuir os dois tipos de conta", e.getMessage());
 		}
-	}
 	
-	@Test
-	public void transfMesmaConta() {
+	
 		try{
 			emulador.transfer(1,Checking,Checking,0);
 			fail("Esperava exceção");
@@ -93,10 +89,8 @@ public class TestTransfer {
 		}catch(Exception e){
 			Assert.assertEquals("Não é possível realizar tranferência para a mesma conta", e.getMessage());
 		}
-	}
 	
-	@Test
-	public void transfMesmaContaSemPossuir() {
+		
 		try{
 			emulador.transfer(1,Money_Market,Money_Market,0);
 			fail("Esperava exceção");
@@ -121,75 +115,61 @@ public class TestTransfer {
 	
 	
 	//Teste tabela de decisão
-	public void transfValida() {
+	public void transfTabDec() {
 		try{
 			emulador.transfer(1,Checking,Saving,10);
 		}catch(Exception e){
 			fail("Não esperava exceção");
 		}
-	}
 	
-	@Test
-	public void transfValorInvalido() {
+
 		try{
 			emulador.transfer(1,Checking,Saving,-10);
 		}catch(Exception e){
 			fail("O valor da transferência deve ser maior que zero");
 		}
-	}
-	
-	@Test
-	public void transfNaoPossuiConta() {
+
+		
 		try{
 			emulador.transfer(1,Checking,Money_Market,10);
 			fail("Esperava exceção");
 		}catch(Exception e){
 			Assert.assertEquals("Você deve possuir os dois tipos de conta", e.getMessage());
 		}
-	}
 	
-	@Test
-	public void transfNaoPossuiContaValorInvalido() {
+		
 		try{
 			emulador.transfer(1,Checking,Money_Market,-10);
 			fail("Esperava exceção");
 		}catch(Exception e){
 			Assert.assertEquals("Você deve possuir os dois tipos de conta", e.getMessage());
 		}
-	}
 	
-	@Test
-	public void transfMesmaConta() {
+		
 		try{
 			emulador.transfer(1,Checking,Checking,10);
 			fail("Esperava exceção");
 		}catch(Exception e){
 			Assert.assertEquals("Não é possível realizar tranferência para a mesma conta", e.getMessage());
 		}
-	}
 	
-	@Test
-	public void transfMesmaContaValorInvalido() {
+	
 		try{
 			emulador.transfer(1,Checking,Checking,-10);
 			fail("Esperava exceção");
 		}catch(Exception e){
 			Assert.assertEquals("Não é possível realizar tranferência para a mesma conta", e.getMessage());
 		}
-	}
 	
-	@Test
-	public void transfMesmaContaSemPossuir() {
+		
 		try{
 			emulador.transfer(1,Money_Market,Money_Market,10);
 			fail("Esperava exceção");
 		}catch(Exception e){
 			Assert.assertEquals("Não é possível realizar tranferência para a mesma conta", e.getMessage());
 		}
-	}
 	
-	@Test
-	public void transfMesmaContaSemPossuirValorInvalido() {
+		
 		try{
 			emulador.transfer(1,Money_Market,Money_Market,-10);
 			fail("Esperava exceção");

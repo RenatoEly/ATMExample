@@ -27,26 +27,22 @@ public class TestWithdraw {
 	
 	//Teste por tabela de decisão
 	@Test
-	public void saqueValido() {
+	public void testeTabDec() {
 		try{
 			emulador.withdraw(1,Checking,100);
 		}catch(Exception e){
 			fail("Não esperava exceção");
 		}
-	}
 	
-	@Test
-	public void saqueMaiorSaldo(){
+		
 		try{
 			emulador.withdraw(1,Checking,200);
 			fail("Esperava exceção");
 		}catch(Exception e){
 			Assert.assertEquals("Valor de saque maior que o saldo disponível", e.getMessage());
 		}
-	}
 	
-	@Test
-	public void saqueMaiorDisponivel(){
+		
 		emulador.getCartao(1).getConta(Checking).setSaldo(500);
 		
 		try{
@@ -55,10 +51,8 @@ public class TestWithdraw {
 		}catch(Exception e){
 			Assert.assertEquals("Valor de saque maior que o disponível na atm", e.getMessage());
 		}
-	}
 	
-	@Test
-	public void saqueMaiorDiario(){
+		
 		emulador.init(50);
 		emulador.getCartao(1).getContaChecking().setSaldo(500);
 		
@@ -68,20 +62,16 @@ public class TestWithdraw {
 		}catch(Exception e){
 			Assert.assertEquals("Valor de saque maior que o limite diário", e.getMessage());
 		}
-	}
 	
-	@Test
-	public void saqueMaiorDisponivelESaldo(){
+		
 		try{
 			emulador.withdraw(1,Checking,240);
 			fail("Esperava exceção");
 		}catch(Exception e){
 			Assert.assertEquals("Valor de saque maior que o disponível na atm", e.getMessage());
 		}
-	}
 	
-	@Test
-	public void saqueMaiorDiarioESaldo(){
+		
 		emulador.init(50);
 		
 		try{
@@ -90,10 +80,8 @@ public class TestWithdraw {
 		}catch(Exception e){
 			Assert.assertEquals("Valor de saque maior que o limite diário", e.getMessage());
 		}
-	}
 	
-	@Test
-	public void saqueMaiorDiarioEDisponivel(){
+	
 		emulador.getCartao(1).getConta(Checking).setSaldo(500);
 		
 		try{
@@ -102,20 +90,16 @@ public class TestWithdraw {
 		}catch(Exception e){
 			Assert.assertEquals("Valor de saque maior que o limite diário", e.getMessage());
 		}
-	}
 	
-	@Test
-	public void saqueMaiorDiarioEDisponivelESaldo(){
+		
 		try{
 			emulador.withdraw(1,Checking,340);
 			fail("Esperava exceção");
 		}catch(Exception e){
 			Assert.assertEquals("Valor de saque maior que o limite diário", e.getMessage());
 		}
-	}
 	
-	@Test
-	public void saqueContaNaoAssociada(){
+		
 		try{
 			emulador.withdraw(1,Money_Market,100);
 			fail("Esperava exceção");

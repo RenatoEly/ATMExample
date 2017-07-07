@@ -25,7 +25,7 @@ public class TestDeposit {
 		}	
 		
 		try{
-			emulador.deposit(1,Checking,0.02).equals(true);
+			emulador.deposit(1,Checking,0.02);
 		}catch (Exception e) {
 			Assert.fail("Não esperava exceção");
 		}	
